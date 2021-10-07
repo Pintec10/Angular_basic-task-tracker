@@ -11,6 +11,7 @@ import { FaStackItemSizeDirective } from '@fortawesome/angular-fontawesome';
 export class TaskItemComponent implements OnInit {
   @Input() task: Task;
   @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter();
+  @Output() onToggleReminder: EventEmitter<Task> = new EventEmitter();
   faTimes = faTimes;
 
   constructor() { }
@@ -20,6 +21,11 @@ export class TaskItemComponent implements OnInit {
 
   onDelete(task: Task) {
     this.onDeleteTask.emit(task);
+  }
+
+  onToggle(task: Task) {
+    console.log("toggled")
+    this.onToggleReminder.emit(task);
   }
 
 }
